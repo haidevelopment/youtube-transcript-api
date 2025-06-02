@@ -52,7 +52,8 @@ app.get('/api/transcript/:videoId', async (req, res) => {
       success: true,
       videoId: videoId,
       transcript: transcript,
-      totalSegments: transcript.length
+      totalSegments: transcript.length,
+      plainText: transcript.map(segment => segment.text).join(' ')
     });
 
   } catch (error) {
@@ -111,7 +112,8 @@ app.post('/api/transcript', async (req, res) => {
       url: url,
       videoId: videoId,
       transcript: transcript,
-      totalSegments: transcript.length
+      totalSegments: transcript,
+      plainText: transcript.map(segment => segment.text).join(' ')
     });
 
   } catch (error) {
